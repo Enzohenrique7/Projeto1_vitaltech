@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Layout from '../components/Layout'
-import Login from '../pages/Login/Login'
-import Patients from '../pages/Patients/Patients'
-import PatientProfile from '../pages/Patients/PatientProfile'
-import Trails from '../pages/Trails/Trails'
-import TrailForm from '../pages/Trails/TrailForm'
-import Videos from '../pages/Videos/Videos'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import Layout from "../components/Layout"
+import Login from "../pages/Login/Login"
+import Patients from "../pages/Patients/Patients"
+import PatientProfile from "../pages/Patients/PatientProfile"
+import Trails from "../pages/Trails/Trails"
+import TrailForm from "../pages/Trails/TrailForm"
+import Videos from "../pages/Videos/Videos"
 
 function AppRoutes() {
   return (
