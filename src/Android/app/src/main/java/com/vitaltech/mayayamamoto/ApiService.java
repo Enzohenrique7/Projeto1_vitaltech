@@ -6,9 +6,9 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @POST("/cadastrarPaciente")
+    @POST("cadastrarPaciente")
     Call<Usuarios> cadastrar(@Body Usuarios usuarios);
 
-    @POST("/login")
+    @POST("login")
     Call<LoginResponse> logar(@Body LoginRequest login);
 }
