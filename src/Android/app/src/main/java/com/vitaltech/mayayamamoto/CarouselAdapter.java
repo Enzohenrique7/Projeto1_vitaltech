@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder> {
+    // Lista de imagens
     private final List<Integer> imageList;
 
     public CarouselAdapter(List<Integer> imageList){
@@ -24,6 +25,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         return new CarouselViewHolder(view);
     }
 
+    // O que exibe a imagem na tela pra cada item
     @Override
     public void onBindViewHolder(@NonNull CarouselViewHolder holder, int position) {
         holder.imageView.setImageResource(imageList.get(position));
@@ -37,6 +39,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     static class CarouselViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
 
+        // Celula do carrossel
         public CarouselViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);

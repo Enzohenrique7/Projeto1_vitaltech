@@ -14,7 +14,9 @@ import java.util.ArrayList;
 
 public class ExercicioAdapter extends RecyclerView.Adapter<ExercicioAdapter.ViewHolder> {
 
+    // Contem todos os exercicios que serao exibidos, armazenados em uma lista
     ArrayList<Exercicios> lista;
+    // Acessar recursos do android
     Context context;
 
     public ExercicioAdapter(Context context, ArrayList<Exercicios> lista) {
@@ -22,6 +24,7 @@ public class ExercicioAdapter extends RecyclerView.Adapter<ExercicioAdapter.View
         this.lista = lista;
     }
 
+    // Celula da lista
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtNome, txtFrequencia;
         ImageView imgExercicio;
@@ -34,12 +37,14 @@ public class ExercicioAdapter extends RecyclerView.Adapter<ExercicioAdapter.View
         }
     }
 
+    // Cria a View da celula
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_exercicios, parent, false);
         return new ViewHolder(view);
     }
 
+    // Liga os dados do objeto com os elementos da celula
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Exercicios ex = lista.get(position);
@@ -48,6 +53,7 @@ public class ExercicioAdapter extends RecyclerView.Adapter<ExercicioAdapter.View
         holder.txtFrequencia.setText(ex.getFrequencia());
         holder.imgExercicio.setImageResource(ex.getImgExercicio());
 
+        // Quando clicar, vai para outra tela, pegando somente o nome do exercicio
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetalheActivity.class);
 
@@ -57,6 +63,7 @@ public class ExercicioAdapter extends RecyclerView.Adapter<ExercicioAdapter.View
         });
     }
 
+    // Informa pro RecyclerView quantos itens existem na lista
     @Override
     public int getItemCount() {
         return lista.size();

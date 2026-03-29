@@ -1,5 +1,6 @@
 package com.vitaltech.mayayamamoto;
 
+// Dados enviados
 public class LoginRequest {
     String email;
     String senha;

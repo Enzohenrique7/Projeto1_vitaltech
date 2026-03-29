@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView carouselRecyclerView;
     private CarouselAdapter adapter;
     private int currentIndex = 0;
+
+    // Mudar as imagens carrossel automaticamente a cada 3 segundos
     private final Handler autoScrollHandler = new Handler();
     private final int AUTO_SCROLL_INTERVAL = 3000; // milisegundos
 
@@ -71,12 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.massagem
         );
 
+        // Conecta a lista de imagens com a RecylcerView
         adapter = new CarouselAdapter(images);
         carouselRecyclerView.setAdapter(adapter);
 
+        // Faz com que o carrossel trave no no item central
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(carouselRecyclerView);
 
+        // Pausa o autoscroll quando o usuario esta interagindo, e volta quando o usuario não esta mais interagindo
         carouselRecyclerView.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:

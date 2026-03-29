@@ -37,11 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         btEntrar = findViewById(R.id.btEntrar);
 
         btEntrar.setOnClickListener(v -> {
+            // Pegando dados do Login
             String emailStr = editTxtEmail.getText().toString();
             String senhaStr = editTxtSenha.getText().toString();
 
             LoginRequest login = new LoginRequest(emailStr, senhaStr);
 
+            // Chamando a funcao da API
             api.logar(login).enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {

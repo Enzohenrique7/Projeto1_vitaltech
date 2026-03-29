@@ -21,6 +21,7 @@ import retrofit2.Response;
 
 public class CadastroActivity extends AppCompatActivity {
 
+    // Conexao com a api
     ApiService api = RetrofitClient.getRetrofit().create(ApiService.class);
 
     EditText editTxtNome, editTxtEmail, editTxtSenha, editTextDataNasc, editTxtTelefone;
@@ -43,34 +44,37 @@ public class CadastroActivity extends AppCompatActivity {
         btCadastro = findViewById(R.id.btCadastro);
 
         btCadastro.setOnClickListener(v -> {
+            // Pegando dados do usuario
             String nomeStr = editTxtNome.getText().toString();
             String emailStr = editTxtEmail.getText().toString();
             String senhaStr = editTxtSenha.getText().toString();
             String data_nasc = editTextDataNasc.getText().toString();
             String telefone = editTxtTelefone.getText().toString();
 
+            // Criando o objeto que vai virar JSON (Onde o GSON vai converter automaticamente)
             Usuarios usuario = new Usuarios(nomeStr, emailStr, senhaStr, data_nasc, telefone);
 
+            // Chamando a funcao da api (enqueue - roda em segundo plano sem travar a aplicacao)
             api.cadastrar(usuario).enqueue(new Callback<Usuarios>() {
                 @Override
                 public void onResponse(Call<Usuarios> call, Response<Usuarios> response) {
+                    // Se a API tiver sucesso
                     if (response.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Cadastro feito!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CadastroActivity.this, TrilhaExerciciosActivity.class);
                         startActivity(intent);
+                        // Se a API nao tiver sucesso
                     } else {
                         Toast.makeText(getApplicationContext(), "Erro: " + response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
+                // Se der Falha de conexao
                 @Override
                 public void onFailure(Call<Usuarios> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Falha: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-            intent = new Intent(CadastroActivity.this, TrilhaExerciciosActivity.class);
-            intent.putExtra("nome", nomeStr);
         });
 
 

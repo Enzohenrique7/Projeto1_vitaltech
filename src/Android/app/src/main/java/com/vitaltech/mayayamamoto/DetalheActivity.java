@@ -15,6 +15,7 @@ public class DetalheActivity extends AppCompatActivity {
     TextView nome, descricao;
     Button btVoltar;
 
+    // Mini carrossel provisorio
     int[] imagens = {R.drawable.inspirar1, R.drawable.segurar2, R.drawable.expirar3};
 
     int index = 0;

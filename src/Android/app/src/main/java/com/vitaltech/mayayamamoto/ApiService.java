@@ -6,6 +6,7 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
+    // Rotas da API
     @POST("cadastrarPaciente")
     Call<Usuarios> cadastrar(@Body Usuarios usuarios);
 

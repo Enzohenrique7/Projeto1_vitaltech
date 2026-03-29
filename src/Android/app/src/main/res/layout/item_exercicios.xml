@@ -8,6 +8,7 @@
     android:layout_margin="12dp"
     android:background="@drawable/section_background">
 
+    <!-- Itens do exercicio -->
     <ImageView
         android:id="@+id/imgExercicio"
         android:layout_width="70dp"

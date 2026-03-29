@@ -24,6 +24,7 @@ public class TrilhaExerciciosActivity extends AppCompatActivity {
 
         ArrayList<Exercicios> lista = new ArrayList<>();
 
+        // Adicionando objetos na lista
         lista.add(new Exercicios("Postura em Pé", "desc", "2x ao dia", R.drawable.postura_em_pe));
         lista.add(new Exercicios("Alongamento", "desc", "1x ao dia", R.drawable.alongamento));
         lista.add(new Exercicios("Respiração", "desc", "3x ao dia", R.drawable.respiracao));
