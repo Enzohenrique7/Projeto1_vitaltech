@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MayaYamamoto"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,19 +25,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CadastroActivity"
+            android:name=".activity.CadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".TrilhaExerciciosActivity"
+            android:name=".activity.TrilhaExerciciosActivity"
             android:exported="false" />
         <activity
-            android:name=".DetalheActivity"
+            android:name=".activity.DetalheActivity"
             android:exported="false" />
 
-        <activity android:name=".RecuperarSenhaActivity" android:exported="false" />
+        <activity android:name=".activity.RecuperarSenhaActivity" android:exported="false" />
 
     </application>
 

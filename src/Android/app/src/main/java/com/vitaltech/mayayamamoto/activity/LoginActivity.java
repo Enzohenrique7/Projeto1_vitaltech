@@ -1,6 +1,5 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,6 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.vitaltech.mayayamamoto.network.ApiService;
+import com.vitaltech.mayayamamoto.model.LoginRequest;
+import com.vitaltech.mayayamamoto.model.LoginResponse;
+import com.vitaltech.mayayamamoto.R;
+import com.vitaltech.mayayamamoto.network.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
+import com.vitaltech.mayayamamoto.R;
 
 public class DetalheActivity extends AppCompatActivity {
     ImageView img;

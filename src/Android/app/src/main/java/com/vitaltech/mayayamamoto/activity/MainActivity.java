@@ -1,6 +1,5 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.google.android.material.carousel.CarouselLayoutManager;
+import com.vitaltech.mayayamamoto.adapter.CarouselAdapter;
+import com.vitaltech.mayayamamoto.R;
 
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.Arrays;
 import java.util.List;

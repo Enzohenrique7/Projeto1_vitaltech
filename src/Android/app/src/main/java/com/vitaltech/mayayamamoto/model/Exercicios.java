@@ -1,4 +1,4 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.model;
 
 public class Exercicios {
     private String nomeExercicio;

@@ -1,4 +1,4 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.vitaltech.mayayamamoto.network.ApiService;
+import com.vitaltech.mayayamamoto.R;
+import com.vitaltech.mayayamamoto.network.RetrofitClient;
+import com.vitaltech.mayayamamoto.model.Usuarios;
 
 import java.util.Calendar;
 

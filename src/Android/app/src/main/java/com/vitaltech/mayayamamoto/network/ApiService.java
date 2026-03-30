@@ -1,4 +1,8 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.network;
+
+import com.vitaltech.mayayamamoto.model.LoginRequest;
+import com.vitaltech.mayayamamoto.model.LoginResponse;
+import com.vitaltech.mayayamamoto.model.Usuarios;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

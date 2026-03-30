@@ -1,4 +1,4 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.vitaltech.mayayamamoto.adapter.ExercicioAdapter;
+import com.vitaltech.mayayamamoto.model.Exercicios;
+import com.vitaltech.mayayamamoto.R;
 
 import java.util.ArrayList;
 

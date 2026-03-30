@@ -1,4 +1,4 @@
-package com.vitaltech.mayayamamoto;
+package com.vitaltech.mayayamamoto.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.vitaltech.mayayamamoto.model.Exercicios;
+import com.vitaltech.mayayamamoto.R;
+import com.vitaltech.mayayamamoto.activity.DetalheActivity;
 
 import java.util.ArrayList;
 
