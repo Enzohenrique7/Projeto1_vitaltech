@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom"
 const pacienteMock = {
   id_usuario: 1,
   nome: "Maria Mendonça",
-  data_nascimento: "1990-05-10",
+  nascimento: "1990-05-10",
   telefone: "11999999999",
   is_ativo: true,
   prontuario: {
     id_prontuario: 1,
-    data_inicio_tratamento: "2024-08-21",
-    classificacao_paciente: "RPG",
+    data_inicio: "2024-08-21",
+    classificacao: "Moderado" as const,
     orientacoes: [
       { id_orientacao: 1, orientacao: "Evitar esforço físico intenso", data_orientacao: "2024-08-21" },
       { id_orientacao: 2, orientacao: "Realizar exercícios em casa diariamente", data_orientacao: "2024-08-28" },
@@ -19,27 +19,27 @@ const pacienteMock = {
       { id_queixa: 1, queixa: "Dor lombar crônica", data_queixa: "2024-08-21" },
     ],
     sinais: [
-      { id_sinal: 1, sinal: "Dor", escala: "7/10" },
-      { id_sinal: 2, sinal: "Mobilidade", escala: "7/10" },
+      { id_sinal: 1, sinal: "Dor", escala: 7 },
+      { id_sinal: 2, sinal: "Mobilidade lombar", escala: 5 },
     ],
     avaliacoes: [
-      { id_avaliacao: 1, avaliacao: "Paciente apresenta melhora postural significativa", data_avalicao: "2024-09-03" },
+      { id_avaliacao: 1, avaliacao: "Paciente apresenta melhora postural significativa", data_avaliacao: "2024-09-03" },
     ],
-    registros: [
-      { id_registro_exercicio: 1, data_registro: "2024-08-22", anotacao: "Consegui completar todos os exercícios com mais tranquilidade" },
-      { id_registro_exercicio: 2, data_registro: "2024-08-23", anotacao: "Senti um pouco de dor durante os exercícios" },
+    exercicios: [
+      { id_exercicio: 1, titulo: "Alongamento Cervical", orientacoes: "Realizar devagar, sem forçar" },
+      { id_exercicio: 2, titulo: "Respiração Diafragmática", orientacoes: "5 repetições, inspirar 4 tempos, expirar 6" },
     ],
   }
 }
 
-type Secao = "orientacoes" | "progresso" | "prontuario"
+type Secao = "orientacoes" | "exercicios" | "prontuario"
 
 function PatientProfile() {
   const navigate = useNavigate()
   const [secoesAbertas, setSecoesAbertas] = useState({
-  orientacoes: false,
-  progresso: false,
-  prontuario: false,
+    orientacoes: false,
+    exercicios: false,
+    prontuario: false,
   })
   const p = pacienteMock
   const pr = p.prontuario
@@ -80,10 +80,10 @@ function PatientProfile() {
         {/*informações*/}
         <div style={{ flex: 1 }}>
           <div style={{ fontWeight: "bold", fontSize: "20px", marginBottom: "8px" }}>{p.nome}</div>
-          <div>Classificação: {pr.classificacao_paciente}</div>
-          <div>Início do tratamento: {pr.data_inicio_tratamento}</div>
+          <div>Classificação: {pr.classificacao}</div>
+          <div>Início do tratamento: {pr.data_inicio}</div>
           <div>Telefone: {p.telefone}</div>
-          <div>Data de nascimento: {p.data_nascimento}</div>
+          <div>Data de nascimento: {p.nascimento}</div>
         </div>
 
         {/*status*/}
@@ -115,17 +115,17 @@ function PatientProfile() {
           )}
         </div>
 
-        {/*progresso*/}
+        {/*exercícios prescritos*/}
         <div>
-          <div onClick={() => toggleSecao("progresso")} style={{ color: "#3EBAD2", fontWeight: "bold", fontSize: "20px", cursor: "pointer" }}>
-            Progresso {secoesAbertas.progresso ? "▲" : "▼"}
+          <div onClick={() => toggleSecao("exercicios")} style={{ color: "#3EBAD2", fontWeight: "bold", fontSize: "20px", cursor: "pointer" }}>
+            Exercícios Prescritos {secoesAbertas.exercicios ? "▲" : "▼"}
           </div>
-          {secoesAbertas.progresso && (
+          {secoesAbertas.exercicios && (
             <div className="mt-2 d-flex flex-column gap-2">
-              {pr.registros.map(r => (
-                <div key={r.id_registro_exercicio} style={{ backgroundColor: "#f5f5f5", borderRadius: "8px", padding: "12px 16px" }}>
-                  <div>{r.anotacao}</div>
-                  <div style={{ fontSize: "12px", color: "#888" }}>{r.data_registro}</div>
+              {pr.exercicios.map(e => (
+                <div key={e.id_exercicio} style={{ backgroundColor: "#f5f5f5", borderRadius: "8px", padding: "12px 16px" }}>
+                  <div style={{ fontWeight: "bold", color: "#01577A" }}>{e.titulo}</div>
+                  <div style={{ fontSize: "14px", color: "#555", marginTop: "4px" }}>{e.orientacoes}</div>
                 </div>
               ))}
             </div>
@@ -141,9 +141,7 @@ function PatientProfile() {
           {secoesAbertas.prontuario && (
             <div className="mt-2 d-flex flex-column gap-3">
               <div>
-                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
-                  Queixas
-                </div>
+                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Queixas</div>
                 {pr.queixas.map(q => (
                   <div key={q.id_queixa} style={{ backgroundColor: "#f5f5f5", borderRadius: "8px", padding: "12px 16px", marginBottom: "8px" }}>
                     <div>{q.queixa}</div>
@@ -153,23 +151,20 @@ function PatientProfile() {
               </div>
 
               <div>
-                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
-                  Sinais
-                </div>
+                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Sinais</div>
                 {pr.sinais.map(s => (
                   <div key={s.id_sinal} style={{ backgroundColor: "#f5f5f5", borderRadius: "8px", padding: "12px 16px", marginBottom: "8px" }}>
-                    <div>{s.sinal} — Escala: {s.escala}</div>
+                    <div>{s.sinal} — Escala: {s.escala}/10</div>
                   </div>
                 ))}
               </div>
 
               <div>
-                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
-                  Avaliações</div>
+                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Avaliações</div>
                 {pr.avaliacoes.map(a => (
                   <div key={a.id_avaliacao} style={{ backgroundColor: "#f5f5f5", borderRadius: "8px", padding: "12px 16px", marginBottom: "8px" }}>
                     <div>{a.avaliacao}</div>
-                    <div style={{ fontSize: "12px", color: "#888" }}>{a.data_avalicao}</div>
+                    <div style={{ fontSize: "12px", color: "#888" }}>{a.data_avaliacao}</div>
                   </div>
                 ))}
               </div>

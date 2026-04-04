@@ -4,9 +4,7 @@ import Login from "../pages/Login/Login"
 import Patients from "../pages/Patients/Patients"
 import PatientProfile from "../pages/Patients/PatientProfile"
 import NewPatient from "../pages/Patients/NewPatient"
-import Trails from "../pages/Trails/Trails"
-import TrailForm from "../pages/Trails/TrailForm"
-import Videos from "../pages/Videos/Videos"
+import Exercises from "../pages/Exercises/Exercises"
 
 function AppRoutes() {
   return (
@@ -17,10 +15,7 @@ function AppRoutes() {
         <Route path="/patients" element={<Layout><Patients /></Layout>} />
         <Route path="/patients/:id" element={<Layout><PatientProfile /></Layout>} />
         <Route path="/patients/new" element={<Layout><NewPatient /></Layout>} />
-        <Route path="/trails" element={<Layout><Trails /></Layout>} />
-        <Route path="/trails/new" element={<Layout><TrailForm /></Layout>} />
-        <Route path="/trails/:id" element={<Layout><TrailForm /></Layout>} />
-        <Route path="/videos" element={<Layout><Videos /></Layout>} />
+        <Route path="/exercicios" element={<Layout><Exercises /></Layout>} />
       </Routes>
     </BrowserRouter>
   )

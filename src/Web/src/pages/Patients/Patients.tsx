@@ -5,36 +5,44 @@ const pacientesMock = [
   {
     id_usuario: 1,
     nome: "Maria Mendonça",
-    data_nascimento: "1990-05-10",
+    nascimento: "1990-05-10",
     telefone: "11999999999",
     is_ativo: true,
-    data_inicio_tratamento: "2024-08-21",
+    data_inicio: "2024-08-21",
   },
   {
     id_usuario: 2,
     nome: "Bruno Gomes Silveira",
-    data_nascimento: "1985-03-22",
+    nascimento: "1985-03-22",
     telefone: "11988888888",
     is_ativo: true,
-    data_inicio_tratamento: "2024-08-29",
+    data_inicio: "2024-08-29",
   },
   {
     id_usuario: 3,
     nome: "Ana Maria Brogui",
-    data_nascimento: "1978-11-01",
+    nascimento: "1978-11-01",
     telefone: "11977777777",
     is_ativo: false,
-    data_inicio_tratamento: null,
+    data_inicio: null,
   },
 ]
+
+type FiltroStatus = "todos" | "ativo" | "inativo"
 
 function Patients() {
   const navigate = useNavigate()
   const [busca, setBusca] = useState("")
+  const [filtroStatus, setFiltroStatus] = useState<FiltroStatus>("todos")
 
-  const pacientesFiltrados = pacientesMock.filter(p =>
-    p.nome.toLowerCase().includes(busca.toLowerCase())
-  )
+  const pacientesFiltrados = pacientesMock.filter(p => {
+    const matchBusca = p.nome.toLowerCase().includes(busca.toLowerCase())
+    const matchStatus =
+      filtroStatus === "todos" ||
+      (filtroStatus === "ativo" && p.is_ativo) ||
+      (filtroStatus === "inativo" && !p.is_ativo)
+    return matchBusca && matchStatus
+  })
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto" }}>
@@ -50,14 +58,26 @@ function Patients() {
         </button>
       </div>
 
-      <input
-        type="text"
-        placeholder="Pesquisar"
-        className="form-control mb-4"
-        style={{ borderRadius: "8px", maxWidth: "400px", margin: "0 auto 24px auto", display: "block" }}
-        value={busca}
-        onChange={e => setBusca(e.target.value)}
-      />
+      <div className="d-flex gap-3 mb-4 align-items-center">
+        <input
+          type="text"
+          placeholder="Pesquisar"
+          className="form-control"
+          style={{ borderRadius: "8px", maxWidth: "400px" }}
+          value={busca}
+          onChange={e => setBusca(e.target.value)}
+        />
+        <select
+          className="form-select"
+          style={{ borderRadius: "8px", maxWidth: "160px" }}
+          value={filtroStatus}
+          onChange={e => setFiltroStatus(e.target.value as FiltroStatus)}
+        >
+          <option value="todos">Todos</option>
+          <option value="ativo">Ativos</option>
+          <option value="inativo">Inativos</option>
+        </select>
+      </div>
 
       <div className="d-flex flex-column gap-3">
         {pacientesFiltrados.map(paciente => (
@@ -79,7 +99,7 @@ function Patients() {
               {paciente.nome}
             </div>
             <div style={{ flex: 1, paddingLeft: "24px" }}>
-              <div>Início do tratamento: {paciente.data_inicio_tratamento ?? "—"}</div>
+              <div>Início do tratamento: {paciente.data_inicio ?? "—"}</div>
               <div>Telefone: {paciente.telefone}</div>
             </div>
             <div style={{ fontWeight: "bold" }}>

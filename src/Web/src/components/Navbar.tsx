@@ -12,11 +12,8 @@ function Navbar() {
           <Link to="/patients" style={{ color: "white", textDecoration: "none", fontWeight: "500" }}>
             HOME/PACIENTES
           </Link>
-          <Link to="/videos" style={{ color: "white", textDecoration: "none", fontWeight: "500" }}>
-            VIDEOS
-          </Link>
-          <Link to="/trails" style={{ color: "white", textDecoration: "none", fontWeight: "500" }}>
-            TRILHAS
+          <Link to="/exercicios" style={{ color: "white", textDecoration: "none", fontWeight: "500" }}>
+            EXERCICIOS
           </Link>
         </div>
       </div>
