@@ -110,6 +110,9 @@ public class CadastroActivity extends AppCompatActivity {
             String data_nasc = editTextDataNasc.getText().toString();
             String telefone = editTxtTelefone.getText().toString();
 
+            // limpando o que nao for numero do telefone
+            String telefoneLimpo = telefone.replaceAll("[^\\d]", "");
+
             boolean erro = false;
 
             // Verificacando se os campos estao vazios
@@ -133,7 +136,7 @@ public class CadastroActivity extends AppCompatActivity {
                 erro = true;
             }
 
-            if(telefone.length() < 11){
+            if(telefoneLimpo.length() < 11){
                 editTxtTelefone.setError("Telefone incompleto");
                 erro = true;
             }
@@ -151,7 +154,7 @@ public class CadastroActivity extends AppCompatActivity {
             }
 
             // Criando o objeto que vai virar JSON (Onde o GSON vai converter automaticamente)
-            Usuarios usuario = new Usuarios(nomeStr, emailStr, senhaStr, data_nasc, telefone);
+            Usuarios usuario = new Usuarios(nomeStr, emailStr, senhaStr, data_nasc, telefoneLimpo);
 
             // Chamando a funcao da api (enqueue - roda em segundo plano sem travar a aplicacao)
             api.cadastrar(usuario).enqueue(new Callback<Usuarios>() {

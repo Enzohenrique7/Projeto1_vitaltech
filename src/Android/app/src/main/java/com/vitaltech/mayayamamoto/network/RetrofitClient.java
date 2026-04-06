@@ -10,7 +10,7 @@ public class RetrofitClient {
     // IP padrao para utilizar no EMULADOR do Android Studio
     private static final String BASE_URL = "http://10.0.2.2:5000/";
 
-    // IP do computador
+    //IP do computador
     //private static final String BASE_URL = "http://xxx.xxx.x.x:5000/";
 
     // Instancia unica do Retrofit
