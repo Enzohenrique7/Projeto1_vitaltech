@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
         btEntrar.setOnClickListener(v -> {
             // Pegando dados do Login
-            String emailStr = editTxtEmail.getText().toString();
-            String senhaStr = editTxtSenha.getText().toString();
+            String emailStr = editTxtEmail.getText().toString().trim();
+            String senhaStr = editTxtSenha.getText().toString().trim();
 
             LoginRequest login = new LoginRequest(emailStr, senhaStr);
 
