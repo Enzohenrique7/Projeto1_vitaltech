@@ -1,5 +1,5 @@
 import { CriptografarSenha, ValidarSenha } from "../libs/bcrypt.ts";
-import { CadastrarPaciente, LoginUsuario, ValidarEmail } from "../model/usuarios.ts";
+import { buscarPaciente, CadastrarPaciente, LoginUsuario, ValidarEmail } from "../model/usuarios.ts";
 import type { NovoPaciente } from "../types/types.ts";
 import { ERROR_INVALID_CREDENTIALS, ERROR_NOT_FOUND, ERROR_REQUIRED_FIELDS, ERROR_USED_EMAIL, WELL_SUCCEDED_LOGIN } from "../util/messages.ts";
 
@@ -43,11 +43,18 @@ export async function ValidarLoginUsuario(email: string, senha: string) {
         return ERROR_REQUIRED_FIELDS
     }
 
-    let login = await LoginUsuario(email)
+    let login = await LoginUsuario(email) as false | { hash_senha: string; id_usuario: number }
 
     if (login) {
-        if (await ValidarSenha(senha, login.toString())) {
-            return WELL_SUCCEDED_LOGIN
+        if (await ValidarSenha(senha, login.hash_senha)) {
+
+            const userData = await buscarPaciente(login.id_usuario)
+
+            return {
+                data: userData,
+                status_code: WELL_SUCCEDED_LOGIN.status_code,
+                message: WELL_SUCCEDED_LOGIN.message
+            }
         } else {
             return ERROR_INVALID_CREDENTIALS
         }

@@ -68,7 +68,11 @@ export async function LoginUsuario(email:string) {
         })
 
         if (findUser) {
-            return findUser.hash_senha
+
+            return {
+                hash_senha: findUser.hash_senha,
+                id_usuario: findUser.id_usuario
+            }
         }
         else{
             return false
@@ -78,5 +82,34 @@ export async function LoginUsuario(email:string) {
     } catch (error) {
         console.log(error)
         return error
+    }
+}
+
+export async function buscarPaciente(id_paciente: number) : Promise< NovoPaciente | false> {
+    try {
+        let paciente = await prisma.pacientes.findUnique({
+            where: {
+                id_paciente: id_paciente
+            },
+            include: {
+                usuarios: true
+            }
+        })
+
+        if (paciente) {
+            return {
+                id_paciente: paciente.id_paciente,
+                nome: paciente.usuarios.nome,
+                email: paciente.usuarios.email,
+                hash_senha: paciente.usuarios.hash_senha,
+                data_nascimento: paciente.usuarios.data_nascimento,
+                telefone: paciente.usuarios.telefone
+            }
+        } else {
+            return false
+        }
+    } catch (error) {
+        console.log(error)
+        return false
     }
 }
