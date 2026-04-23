@@ -3,6 +3,7 @@ import {
   ValidarCadastroPaciente,
   ValidarLoginUsuario,
 } from "./controller/controller_usuarios.ts";
+import { validarCadastroExercicio } from "./controller/controller_exercicios.ts";
 
 const app = express();
 app.use(express.json());
@@ -36,6 +37,18 @@ app.post("/login", async (req, res) => {
   res.status(login.status_code);
   res.json(login);
 });
+
+
+/****************Exercícios****************** */
+app.post("/cadastrarExercicio", async (req, res) => {
+  let data = req.body;
+
+  let cadastrarExercicio = await validarCadastroExercicio(data);
+
+  res.status(cadastrarExercicio.status);
+  res.json(cadastrarExercicio);
+});
+
 
 app.listen(5000, () => {
   console.log("Servidor rodando na porta 5000");

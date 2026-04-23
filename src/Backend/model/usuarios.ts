@@ -23,7 +23,7 @@ export async function CadastrarPaciente(data : TPaciente) {
                 }
             })
             return {
-               id_paciente: paciente.id_paciente,
+                id_paciente: paciente.id_paciente,
                 nome: usuario.nome,
                 email: usuario.email,
                 hash_senha: usuario.hash_senha,

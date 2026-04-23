@@ -18,7 +18,17 @@
     status_code: 401
  }
 
+ export const ERROR_NOT_REGISTERED = {
+    message: 'A solicitação não foi registrada por um erro interno',
+    status_code: 500
+ }
+
  export const WELL_SUCCEDED_LOGIN = {
     message: 'Login bem sucedido',
     status_code: 200
+ }
+
+ export const WELL_SUCCEDED_REGISTER = {
+    message: 'Cadastro bem sucedido',
+    status_code: 201
  }

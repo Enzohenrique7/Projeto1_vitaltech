@@ -12,16 +12,17 @@ export type TExercicio = {
   titulo: string;
   descricao: string;
   orientacoes: string;
-  tags: TTag;
-  imagens: TImagem;
+  tags: TTag[];
+  imagens: TImagem[];
 };
 
-type TTag = {
+export type TTag = {
   id_tag: number;
   tag: string;
 };
 
-type TImagem = {
+export type TImagem = {
   id_imagem: number;
   link_imagem: string;
+  id_exercicio: number;
 };
