@@ -3,7 +3,7 @@ import {
   ValidarCadastroPaciente,
   ValidarLoginUsuario,
 } from "./controller/controller_usuarios.ts";
-import { validarCadastroExercicio } from "./controller/controller_exercicios.ts";
+import { validarCadastroExercicio, listarExercicios, removerExercicio } from "./controller/controller_exercicios.ts";
 
 const app = express();
 app.use(express.json());
@@ -47,6 +47,27 @@ app.post("/cadastrarExercicio", async (req, res) => {
 
   res.status(cadastrarExercicio.status);
   res.json(cadastrarExercicio);
+});
+
+app.get("/listarExercicios", async (_req, res) => {
+  let resultado = await listarExercicios();
+
+  res.status(resultado.status);
+  res.json(resultado);
+});
+
+app.delete("/exercicio/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  const { email, senha } = req.body;
+
+  try {
+    let resultado = await removerExercicio(id, email, senha);
+    res.status(resultado.status);
+    res.json(resultado);
+  } catch (error) {
+    console.log("Erro ao deletar exercício:", error);
+    res.status(500).json({ message: String(error) });
+  }
 });
 
 
