@@ -60,7 +60,7 @@ model exericios_tags {
 
 model imagens_exercicios {
   id_imagem    Int        @id @default(autoincrement())
-  link_imagem  String     @db.VarChar(2048)
+  link_imagem  String
   id_exercicio Int
   exercicios   exercicios @relation(fields: [id_exercicio], references: [id_exercicio], onDelete: Cascade, onUpdate: NoAction, map: "fk_exercicio_imagem")
 }

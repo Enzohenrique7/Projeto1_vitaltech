@@ -16,61 +16,38 @@ export async function cadastrarExercicio(data: TExercicio) {
     });
 
     if (exercicio) {
-      data.tags.forEach(async (tag) => {
+      await Promise.all(data.tags.map(async (tag) => {
         let verifyTag = await verificarTag(tag)
 
         if (verifyTag) {
-          prisma.exericios_tags.create({
+          await prisma.exericios_tags.create({
             data: {
               id_exercicio: exercicio.id_exercicio,
               id_tag: verifyTag
             }
           })
-        }
-
-        else{
+        } else {
           let newTag = await cadastrarTag(tag)
-
-          if (!newTag) return false
-
-          prisma.exericios_tags.create({
+          if (!newTag) return
+          await prisma.exericios_tags.create({
             data: {
               id_exercicio: exercicio.id_exercicio,
               id_tag: newTag.id_tag
             }
           })
         }
-      })
+      }))
 
-      data.imagens.forEach(async (imagem) => {
-        let verifyImage = await verificarImagem(imagem)
+      await Promise.all(data.imagens.map(async (imagem) => {
+        await prisma.imagens_exercicios.create({
+          data: {
+            id_exercicio: exercicio.id_exercicio,
+            link_imagem: imagem.link_imagem
+          }
+        })
+      }))
 
-        if (verifyImage) {
-          prisma.imagens_exercicios.create({
-            data: {
-              id_exercicio: exercicio.id_exercicio,
-              link_imagem: imagem.link_imagem
-            }
-          })
-
-          return data
-        }
-
-        else{
-          let newImage = await cadastrarImagem(imagem)
-
-          if (!newImage) return false
-
-          prisma.imagens_exercicios.create({
-            data: {
-              id_exercicio: exercicio.id_exercicio,
-              link_imagem: imagem.link_imagem
-            }   
-          })
-
-          return data
-        }
-      })
+      return exercicio
     }
 
     else return false
@@ -156,6 +133,32 @@ export async function cadastrarImagem(data: TImagem) {
 
   } catch (error) {
     console.log(error)
-    return false  
+    return false
+  }
+}
+
+export async function buscarExercicios() {
+  try {
+    return await prisma.exercicios.findMany({
+      include: {
+        exericios_tags: {
+          include: { tags: true }
+        },
+        imagens_exercicios: true
+      }
+    })
+  } catch (error) {
+    console.log(error)
+    return false
+  }
+}
+
+export async function deletarExercicio(id: number) {
+  try {
+    await prisma.exercicios.delete({ where: { id_exercicio: id } })
+    return true
+  } catch (error) {
+    console.log(error)
+    return false
   }
 }

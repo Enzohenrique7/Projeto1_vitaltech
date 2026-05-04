@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { criarExercicio } from "../../services/exercicios"
 
 function NewExercise() {
   const navigate = useNavigate()
@@ -8,8 +9,11 @@ function NewExercise() {
   const [orientacoes, setOrientacoes] = useState("")
   const [tagInput, setTagInput] = useState("")
   const [tags, setTags] = useState<string[]>([])
-  const [imagemInput, setImagemInput] = useState("")
   const [imagens, setImagens] = useState<string[]>([])
+  const [urlInput, setUrlInput] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [erro, setErro] = useState("")
+  const [sucesso, setSucesso] = useState(false)
 
   const addTag = () => {
     const tag = tagInput.trim()
@@ -21,24 +25,34 @@ function NewExercise() {
 
   const removeTag = (tag: string) => setTags(tags.filter(t => t !== tag))
 
-  const addImagem = () => {
-    const url = imagemInput.trim()
+  const removeImagem = (src: string) => setImagens(imagens.filter(i => i !== src))
+
+  const addUrlImagem = () => {
+    const url = urlInput.trim()
     if (url && !imagens.includes(url)) {
-      setImagens([...imagens, url])
+      setImagens(prev => [...prev, url])
     }
-    setImagemInput("")
+    setUrlInput("")
   }
 
-  const removeImagem = (url: string) => setImagens(imagens.filter(i => i !== url))
-
-  const handleSalvar = () => {
-    if (!titulo.trim()) {
-      alert("O título é obrigatório.")
+  const handleSalvar = async () => {
+    if (!titulo.trim() || !descricao.trim() || !orientacoes.trim()) {
+      setErro("Título, descrição e orientações são obrigatórios.")
       return
     }
-    // TODO: POST /api/v1/exercicios
-    alert(`Exercício "${titulo}" criado com sucesso!`)
-    navigate("/exercicios")
+
+    setErro("")
+    setLoading(true)
+
+    try {
+      await criarExercicio({ titulo, descricao, orientacoes, tags, imagens })
+      setSucesso(true)
+      setTimeout(() => navigate("/exercicios"), 2000)
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "Erro ao cadastrar exercício.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -69,7 +83,7 @@ function NewExercise() {
         </div>
 
         <div>
-          <label style={{ fontWeight: "500" }}>Descrição</label>
+          <label style={{ fontWeight: "500" }}>Descrição *</label>
           <textarea
             className="form-control mt-1"
             style={{ borderRadius: "8px", resize: "vertical" }}
@@ -80,7 +94,7 @@ function NewExercise() {
         </div>
 
         <div>
-          <label style={{ fontWeight: "500" }}>Orientações</label>
+          <label style={{ fontWeight: "500" }}>Orientações *</label>
           <textarea
             className="form-control mt-1"
             style={{ borderRadius: "8px", resize: "vertical" }}
@@ -130,32 +144,36 @@ function NewExercise() {
         </div>
 
         <div>
-          <label style={{ fontWeight: "500" }}>Imagens (URLs)</label>
+          <label style={{ fontWeight: "500" }}>Imagens</label>
           <div className="d-flex gap-2 mt-1">
             <input
-              type="url"
+              type="text"
               className="form-control"
               style={{ borderRadius: "8px" }}
-              placeholder="https://..."
-              value={imagemInput}
-              onChange={e => setImagemInput(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && (e.preventDefault(), addImagem())}
+              placeholder="Cole o link da imagem"
+              value={urlInput}
+              onChange={e => setUrlInput(e.target.value)}
+              onKeyDown={e => e.key === "Enter" && (e.preventDefault(), addUrlImagem())}
             />
             <button
-              onClick={addImagem}
+              onClick={addUrlImagem}
               style={{ backgroundColor: "#3EBAD2", color: "white", border: "none", borderRadius: "8px", padding: "8px 16px", whiteSpace: "nowrap", cursor: "pointer" }}
             >
               Adicionar
             </button>
           </div>
           {imagens.length > 0 && (
-            <div className="d-flex flex-column gap-1 mt-2">
-              {imagens.map(url => (
-                <div key={url} className="d-flex align-items-center gap-2" style={{ fontSize: "13px", color: "#555" }}>
-                  <span style={{ flex: "1", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{url}</span>
+            <div className="d-flex flex-wrap gap-2 mt-2">
+              {imagens.map((src, index) => (
+                <div key={index} style={{ position: "relative" }}>
+                  <img
+                    src={src}
+                    alt={`imagem-${index + 1}`}
+                    style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: "8px", border: "1px solid #e0e0e0" }}
+                  />
                   <button
-                    onClick={() => removeImagem(url)}
-                    style={{ background: "none", border: "none", color: "#EE715F", cursor: "pointer", fontWeight: "bold", fontSize: "16px" }}
+                    onClick={() => removeImagem(src)}
+                    style={{ position: "absolute", top: "-6px", right: "-6px", backgroundColor: "#EE715F", color: "white", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: "1" }}
                   >
                     ×
                   </button>
@@ -167,15 +185,29 @@ function NewExercise() {
 
       </div>
 
+      {erro && (
+        <div className="mt-3" style={{ backgroundColor: "#fdecea", border: "1px solid #EE715F", borderRadius: "8px", padding: "10px 14px", color: "#EE715F", fontSize: "14px", fontWeight: "500" }}>
+          {erro}
+        </div>
+      )}
+
+      {sucesso && (
+        <div className="mt-3" style={{ backgroundColor: "#e8f8f5", border: "1px solid #3EBAD2", borderRadius: "8px", padding: "10px 14px", color: "#01577A", fontSize: "14px", fontWeight: "500" }}>
+          Exercício cadastrado com sucesso! Redirecionando...
+        </div>
+      )}
+
       <div className="mt-4 d-flex gap-3">
         <button
           onClick={handleSalvar}
-          style={{ backgroundColor: "#01577A", color: "white", border: "none", borderRadius: "8px", padding: "10px 32px", fontWeight: "500", fontSize: "16px", cursor: "pointer" }}
+          disabled={loading || sucesso}
+          style={{ backgroundColor: "#01577A", color: "white", border: "none", borderRadius: "8px", padding: "10px 32px", fontWeight: "500", fontSize: "16px", cursor: (loading || sucesso) ? "not-allowed" : "pointer", opacity: (loading || sucesso) ? 0.7 : 1 }}
         >
-          Salvar
+          {loading ? "Salvando..." : "Salvar"}
         </button>
         <button
           onClick={() => navigate("/exercicios")}
+          disabled={loading}
           style={{ backgroundColor: "#ccc", color: "#333", border: "none", borderRadius: "8px", padding: "10px 32px", fontWeight: "500", fontSize: "16px", cursor: "pointer" }}
         >
           Cancelar
