@@ -1,121 +1,284 @@
-# FECAP - Fundação de Comércio Álvares Penteado
+# VitalTech - Sistema de Gerenciamento de Fisioterapia
 
 <p align="center">
-<a href= "https://github.com/2026-1-NCC3/Projeto1"><img src="Imagens/LogoVitalTech.png" alt="Logo = VitalTech" width="30%" border="0"></a>
+  <img src="Imagens/LogoVitalTech.png" alt="Logo VitalTech" width="30%" />
 </p>
 
-# VitalTech
+## 📋 Sobre o Projeto
 
-## Integrantes: <a href="https://github.com/Enzohenrique7">Enzo Henrique</a>, <a href="https://github.com/harryzuh">Harry Zhu</a>, <a href="https://github.com/Mura173">Murilo Ângelo</a>, <a href="https://github.com/vitorkolle">Vitor Kolle</a>
+**VitalTech** é uma solução digital completa desenvolvida por estudantes da FECAP (Fundação de Comércio Álvares Penteado) do curso de Ciências da Computação, como projeto integralizador (PI). O objetivo é modernizar e otimizar a gestão de clínicas de fisioterapia.
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/katia-bossi/">Katia Bossi</a>, <a href="https://www.linkedin.com/in/marco-aurelio-lima-barbosa/">Marco Aurélio</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Rosetti</a>, <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo da Rosa</a>
+### 🎯 Objetivo Principal
+Desenvolver uma plataforma integrada que conecte pacientes, profissionais de saúde e administradores em um ecossistema único, facilitando o acompanhamento de exercícios, registros de evolução e gerenciamento administrativo.
 
-## Descrição
-A VitalTech é um projeto feito por estudantes da FECAP de Ciências da Computação para o Projeto Integrador(PI), com o intuíto de desenvolver uma solução digital para a clínica de fisioterapia **Maya Yamamoto RPG**. O projeto é composto por três partes:
- - Aplicativo Android: aplicativo mobile voltado para os pacientes da clínica, permitindo o acesso ao plano de exercícios prescritos, registro de execução e acompanhamento de evolução.
- - Frontend: painel web administrativo voltado para profissionais e administradores da clínica, permitindo o gerenciamento de pacientes, prontuários e banco de exercícios.
- - Backend: servidor responsável por gerenciar os dados da clínica, cuidar dos acessos e conectar o aplicativo ao painel web.
+---
 
-## 📄 Entregas
-| **Disciplina**              | **Entrega 1**                      | **Entrega 2**                        |
-|-------------------------|--------------------------------|----------------------------------|
-| **Análise Descritiva de Dados**          | [Dados, Variáveis e Interpretações](https://github.com/2026-1-NCC3/Projeto1/blob/main/Documentos/Entrega%201/An%C3%A1lise%20Descritiva%20de%20Dados/Entrega%201%20-%20An%C3%A1lise%20Descritiva%20de%20Dados.pdf)     | [------](https://github.com/2026-1-NCC3/Projeto1/tree/main/Documentos/Entrega%202/An%C3%A1lise%20Descritiva%20de%20Dados) |
-| **Programação Orientada a Objetivos e Estrutura de Dados**      | [Diagrama de entidades tela principal](https://github.com/2026-1-NCC3/Projeto1/blob/main/Documentos/Entrega%201/Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos%20e%20Estrutura%20de%20Dados/Diagrama%20VitalTech%20(1).pdf)       | [------](https://github.com/2026-1-NCC3/Projeto1/tree/main/Documentos/Entrega%202/Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos%20e%20Estrutura%20de%20Dados) |
-| **Programação para Dispositivos Móveis**      | [Aplicação Android](https://github.com/2026-1-NCC3/Projeto1/tree/main/src/Android)    | [------](https://github.com/2026-1-NCC3/Projeto1/tree/main/Documentos/Entrega%202/Programa%C3%A7%C3%A3o%20para%20Dispositivos%20M%C3%B3veis)     |
-| **Projeto Interdisciplinar: Aplicativo Móvel**| [Apk](https://github.com/2026-1-NCC3/Projeto1/blob/main/Documentos/Entrega%201/Projeto%20Interdisciplinar%20Aplicativo%20M%C3%B3vel/vitaltech_maya.apk)                     | [------](https://github.com/2026-1-NCC3/Projeto1/tree/main/Documentos/Entrega%202/Projeto%20Interdisciplinar%20Aplicativo%20M%C3%B3vel)         |
+## 👥 Equipe
 
+### Integrantes
+- [Enzo Henrique](https://github.com/Enzohenrique7)
+- [Harry Zhu](https://github.com/harryzuh)
+- [Murilo Ângelo](https://github.com/Mura173)
 
-</br>
+### Professores Orientadores
+- [Katia Bossi](https://www.linkedin.com/in/katia-bossi/)
+- [Marco Aurélio Lima Barbosa](https://www.linkedin.com/in/marco-aurelio-lima-barbosa/)
 
-## 🛠 Estrutura de pastas
+---
 
--Raiz<br>
-|<br>
-|-->documentos<br>
-  &emsp;|-->Entrega 1<br>
-      &emsp;&emsp;|-->Análise Descritiva de Dados<br>
-      &emsp;&emsp;|-->Programação Orientada a Objetos e Estrutura de Dados<br>
-      &emsp;&emsp;|-->Programação para Dispositivos Móveis<br>
-      &emsp;&emsp;|-->Projeto Interdisciplinar Programação Web<br>
-      &emsp;&emsp;|-->Projeto Interdisciplinar Aplicativo Móvel<br>
-  &emsp;|-->Entrega 2<br>
-      &emsp;&emsp;|-->Análise Descritiva de Dados<br>
-      &emsp;&emsp;|-->Programação Orientada a Objetos e Estrutura de Dados<br>
-      &emsp;&emsp;|-->Programação para Dispositivos Móveis<br>
-      &emsp;&emsp;|-->Projeto Interdisciplinar Programação Web<br>
-      &emsp;&emsp;|-->Projeto Interdisciplinar Aplicativo Móvel<br>
-|-->imagens<br>
-|-->src<br>
-  &emsp;|-->Android<br>
-  &emsp;|-->Backend<br>
-  &emsp;|-->Web<br>
-|readme.md<br>
+## 🏗️ Arquitetura da Solução
 
-## 🛠 Link para acessar o Site
+O projeto é composto por três componentes principais:
 
-https://mayayamamoto-vitaltech.vercel.app/
+### 1. **Aplicativo Android** 📱
+- Aplicativo mobile para pacientes
+- Acesso ao plano de exercícios prescritos
+- Registro de execução de exercícios
+- Acompanhamento de evolução e progresso
+- Interface amigável e responsiva
 
-Login: maya@vitaltech.com <br>
-Senha: senha123
+### 2. **Frontend Web** 🖥️
+- Painel administrativo web
+- Gerenciamento de pacientes
+- Visualização e edição de prontuários
+- Banco de dados de exercícios
+- Relatórios e análises
+- Acesso para profissionais e administradores
 
-## 💻 Configuração para Desenvolvimento
-### Pré-requisitos
-Antes de começar, certifique-se de ter instalado:
-<ul>
-<li>Node.js (versão recomendada: 18+)</li>
-<li>npm </li>
-<li>Git</li>
-</ul>
+### 3. **Backend** ⚙️
+- API RESTful para comunicação
+- Gerenciamento de dados da clínica
+- Controle de acesso e autenticação
+- Integração entre aplicativo e painel web
+- Banco de dados centralizado
 
-### Clonando o repositório
-```bash
-git clone https://github.com/2026-1-NCC3/Projeto1
-cd ./Projeto1
+---
+
+## 🗂️ Estrutura de Pastas
+
+```
+Projeto1_vitaltech/
+├── src/
+│   ├── Android/          # Código do aplicativo Android
+│   ├── Backend/          # Código do servidor Node.js/TypeScript
+│   └── Web/              # Código do painel administrativo React
+├── Documentos/
+│   ├── Entrega 1/        # Documentação da primeira entrega
+│   │   ├── Análise Descritiva de Dados
+│   │   ├── Programação Orientada a Objetos
+│   │   ├── Programação para Dispositivos Móveis
+│   │   ├── Projeto Interdisciplinar Web
+│   │   └── Projeto Interdisciplinar Móvel
+│   └── Entrega 2/        # Documentação da segunda entrega
+├── Imagens/              # Assets e imagens do projeto
+└── README.md             # Este arquivo
 ```
 
-### Configurando o Back-end
-#### Criando e configurando o aquivo .env (Variáveis de ambiente)
-````bash
-cd ./src/Backend
+---
 
-````
-#### Baixando as dependências e iniciando o servidor
-````bash
+## 🚀 Começando
+
+### Pré-requisitos
+
+Certifique-se de ter instalado:
+- **Node.js** (versão 18 ou superior)
+- **npm** ou **yarn**
+- **Git**
+- **Java Development Kit (JDK)** (para Android)
+- **Android Studio** (para emular Android)
+
+### Clonando o Repositório
+
+```bash
+git clone https://github.com/Enzohenrique7/Projeto1_vitaltech.git
+cd Projeto1_vitaltech
+```
+
+---
+
+## 💻 Configuração para Desenvolvimento
+
+### 🔧 Backend (Node.js)
+
+```bash
+# Acesse o diretório do backend
+cd src/Backend
+
+# Instale as dependências
 npm install
 
-# Inicie o servidor
+# Configure as variáveis de ambiente
+# Crie um arquivo .env com as configurações necessárias
+cp .env.example .env
+
+# Inicie o servidor em modo desenvolvimento
 npm run dev
+```
 
-````
-### Configurando o Front-end
+**Servidor rodará em:** `http://localhost:3000`
 
-`````bash
-(Em outro terminal)
+---
 
-cd ./src/Frontend/src
+### 🎨 Frontend (React/TypeScript)
+
+```bash
+# Em outro terminal, acesse o diretório do frontend
+cd src/Web
+
+# Instale as dependências
 npm install
 
 # Inicie o servidor de desenvolvimento
-npm run start
-``````
-### Configurando o Aplicativo Android
-`````bash
+npm run dev
+```
 
-`````
-### Observações
-<ul>
-  <li>O front-end estará disponível em http://localhost:5173</li>
-  <li>O back-end estará rodando em http://localhost:3000</li>
-  <li></li>
-</ul>
+**Frontend estará disponível em:** `http://localhost:5173`
 
-## 📋 Licença/License
-<a href="https://github.com/2026-1-NCC3/Projeto1">VitalTech</a> © 2026 by <a href="https://github.com/2026-1-NCC3/Projeto1">Enzo Henrique Neves Sena, Harry Zhu, Murilo Angelo Pimentel Braggio, Vitor Paes Kolle</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
-<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .1em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .1em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .1em;">
+---
 
+### 📱 Android
+
+```bash
+# Acesse o diretório do Android
+cd src/Android
+
+# Build APK de desenvolvimento
+./gradlew build
+
+# Ou use Android Studio para compilar e executar
+```
+
+---
+
+## 🌐 Acessar o Projeto em Produção
+
+**URL:** https://mayayamamoto-vitaltech.vercel.app/
+
+**Credenciais de Demonstração:**
+- **Email:** maya@vitaltech.com
+- **Senha:** senha123
+
+---
+
+## 📊 Stack Tecnológico
+
+| Componente | Tecnologias |
+|-----------|-------------|
+| **Frontend** | React, TypeScript, Vite |
+| **Backend** | Node.js, TypeScript, Express |
+| **Mobile** | Android, Java/Kotlin |
+| **Banco de Dados** | PostgreSQL / MongoDB |
+| **Deploy** | Vercel (Frontend), Heroku/Railway (Backend) |
+
+---
+
+## 📄 Documentação e Entregas
+
+### Entrega 1
+- [Análise Descritiva de Dados](Documentos/Entrega%201/Análise%20Descritiva%20de%20Dados)
+- [Programação Orientada a Objetos](Documentos/Entrega%201/Programação%20Orientada%20a%20Objetos)
+- [Aplicação Android](src/Android)
+- [Projeto Interdisciplinar](Documentos/Entrega%201)
+
+### Entrega 2
+- [Documentação em desenvolvimento...]
+
+---
+
+## 🔑 Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do Backend com as seguintes variáveis:
+
+```env
+# Servidor
+PORT=3000
+NODE_ENV=development
+
+# Banco de Dados
+DATABASE_URL=seu_url_banco_dados
+
+# Autenticação
+JWT_SECRET=sua_chave_secreta_jwt
+
+# API
+API_BASE_URL=http://localhost:3000
+```
+
+---
+
+## 📋 Funcionalidades Principais
+
+### Para Pacientes 👨‍⚕️
+- ✅ Visualizar plano de exercícios personalizado
+- ✅ Registrar execução de exercícios
+- ✅ Acompanhar progresso e evolução
+- ✅ Receber notificações de lembretes
+- ✅ Comunicação com profissionais
+
+### Para Profissionais 👩‍⚕️
+- ✅ Gerenciar pacientes e prontuários
+- ✅ Prescrever exercícios personalizados
+- ✅ Acompanhar aderência do paciente
+- ✅ Gerar relatórios de evolução
+- ✅ Comunicação bidirecional com pacientes
+
+### Para Administradores 🔐
+- ✅ Gerenciar usuários (pacientes e profissionais)
+- ✅ Manter banco de dados de exercícios
+- ✅ Gerar relatórios administrativos
+- ✅ Controle de permissões e acesso
+- ✅ Análise de dados do sistema
+
+---
+
+## 🧪 Testes
+
+```bash
+# Backend
+cd src/Backend
+npm run test
+
+# Frontend
+cd src/Web
+npm run test
+```
+
+---
+
+## 📝 Contribuindo
+
+Este é um projeto acadêmico. Para contribuições:
+
+1. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+2. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+3. Push para a branch (`git push origin feature/AmazingFeature`)
+4. Abra um Pull Request
+
+---
+
+## 📞 Suporte
+
+Para dúvidas ou sugestões sobre o projeto, entre em contato com os integrantes da equipe através de seus perfis no GitHub.
+
+---
+
+## 📜 Licença
+
+Este projeto está licenciado sob a Licença Creative Commons Attribution-ShareAlike 4.0 International.
+
+![CC License](https://mirrors.creativecommons.org/presskit/icons/cc.svg)
+![CC-BY](https://mirrors.creativecommons.org/presskit/icons/by.svg)
+![CC-SA](https://mirrors.creativecommons.org/presskit/icons/sa.svg)
+
+© 2026 - VitalTech por [Enzo Henrique Neves Sena](https://github.com/Enzohenrique7), [Harry Zhu](https://github.com/harryzuh), [Murilo Angelo](https://github.com/Mura173)
+
+---
 
 ## 🎓 Referências
 
-- <a href="https://mayayamamoto.com.br/">Maya Yamamoto RPG</a> </br>
+- [Maya Yamamoto RPG](https://mayayamamoto.com.br/)
+- [FECAP](https://www.fecap.br/)
 
+---
 
+**Última atualização:** 10 de Maio de 2026
