@@ -19,6 +19,10 @@ Desenvolver uma plataforma integrada que conecte pacientes, profissionais de sa�
 - [Enzo Henrique](https://github.com/Enzohenrique7)
 - [Harry Zhu](https://github.com/harryzuh)
 - [Murilo Ângelo](https://github.com/Mura173)
+- [Vitor Kolle](https://github.com/vitorkolle)
+
+### Colaboradores
+- [Vitor Kolle](https://github.com/vitorkolle)
 
 ### Professores Orientadores
 - [Katia Bossi](https://www.linkedin.com/in/katia-bossi/)
@@ -270,7 +274,7 @@ Este projeto está licenciado sob a Licença Creative Commons Attribution-ShareA
 ![CC-BY](https://mirrors.creativecommons.org/presskit/icons/by.svg)
 ![CC-SA](https://mirrors.creativecommons.org/presskit/icons/sa.svg)
 
-© 2026 - VitalTech por [Enzo Henrique Neves Sena](https://github.com/Enzohenrique7), [Harry Zhu](https://github.com/harryzuh), [Murilo Angelo](https://github.com/Mura173)
+© 2026 - VitalTech por [Enzo Henrique Neves Sena](https://github.com/Enzohenrique7), [Harry Zhu](https://github.com/harryzuh), [Murilo Angelo](https://github.com/Mura173) e [Vitor Kolle](https://github.com/vitorkolle)
 
 ---
 
