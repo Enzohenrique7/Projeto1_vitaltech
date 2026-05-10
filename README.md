@@ -21,12 +21,11 @@ Desenvolver uma plataforma integrada que conecte pacientes, profissionais de sa�
 - [Murilo Ângelo](https://github.com/Mura173)
 - [Vitor Kolle](https://github.com/vitorkolle)
 
-### Colaboradores
-- [Vitor Kolle](https://github.com/vitorkolle)
-
 ### Professores Orientadores
 - [Katia Bossi](https://www.linkedin.com/in/katia-bossi/)
 - [Marco Aurélio Lima Barbosa](https://www.linkedin.com/in/marco-aurelio-lima-barbosa/)
+- [Rodrigo da Rosa](https://www.linkedin.com/in/rodrigo-da-rosa-phd/)
+- [Victor Barq](https://www.linkedin.com/in/victorbarq/)
 
 ---
 
