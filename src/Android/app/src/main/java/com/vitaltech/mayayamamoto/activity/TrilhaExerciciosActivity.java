@@ -1,12 +1,22 @@
 package com.vitaltech.mayayamamoto.activity;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +36,7 @@ import retrofit2.Response;
 
 public class TrilhaExerciciosActivity extends AppCompatActivity {
     RecyclerView recycler;
-    TextView txtOla;
+    TextView txtOla, txtHistorico;
     Intent intent;
 
     Usuarios usuarios;
@@ -37,6 +47,7 @@ public class TrilhaExerciciosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trilha_exercicios);
 
         recycler = findViewById(R.id.recyclerExercicios);
+        txtHistorico = findViewById(R.id.txtHistorico);
 
         ArrayList<Exercicios> lista = new ArrayList<>();
 
@@ -49,6 +60,43 @@ public class TrilhaExerciciosActivity extends AppCompatActivity {
 
         buscarExercicios();
 
+        // Historico de exercicios realizados
+        SharedPreferences prefs =
+                getSharedPreferences(
+                        "checkin",
+                        MODE_PRIVATE
+                );
+
+        String exercicio =
+                prefs.getString(
+                        "ultimoExercicio",
+                        "Nenhum exercício"
+                );
+
+        String data =
+                prefs.getString(
+                        "ultimaData",
+                        ""
+                );
+
+        txtHistorico.setText(
+                "Último exercício:\n"
+                        + exercicio
+                        + "\n"
+                        + data
+        );
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mostrarNotificacao();
     }
 
     private void buscarExercicios(){
@@ -70,5 +118,39 @@ public class TrilhaExerciciosActivity extends AppCompatActivity {
                 Log.e("API", t.getMessage());
             }
         });
+    }
+
+    // Notificacoes
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
+    private void mostrarNotificacao() {
+
+        String channelId = "canal_exercicios";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel =
+                    new NotificationChannel(
+                            channelId,
+                            "Notificações",
+                            NotificationManager.IMPORTANCE_DEFAULT
+                    );
+
+            NotificationManager manager =
+                    getSystemService(NotificationManager.class);
+
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, channelId)
+                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setContentTitle("Maya Yamamoto")
+                        .setContentText("Hora de fazer seus exercícios!")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager =
+                NotificationManagerCompat.from(this);
+
+        notificationManager.notify(1, builder.build());
     }
 }
